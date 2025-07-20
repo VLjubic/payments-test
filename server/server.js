@@ -12,11 +12,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Serve static files from the client directory
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '/client')));
 
 // Fallback route to serve index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/index.html'));
+  res.sendFile(path.join(__dirname, '/client/index.html'));
 });
 
 // Start the server
