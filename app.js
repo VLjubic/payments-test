@@ -1,23 +1,14 @@
-const express = require('express');
-const path = require('path');
-const { Sequelize, DataTypes } = require('sequelize');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+// server.js
 
-const app = express();
-const PORT = 3001;
+const http = require('http');
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000;
 
-// Serve static files from the client directory
-app.use(express.static(path.join(__dirname, '../client')));
-
-// Fallback route to serve index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/index.html'));
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello from Node.js!\n');
 });
 
-// Start the server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
